@@ -73,11 +73,15 @@ def getfilelist(path):
 
 def initlistbox():
     theLB.delete(0,tk.END)
-    for name in args.filelist:
+    for idx,name in enumerate(args.filelist):
         if name in args.filelabel and args.filelabel[name] in args.cls_list:
-            theLB.insert(tk.END,'*_'+name)
+            #theLB.insert(tk.END,'*_'+name)
+            theLB.insert(tk.END, name)
+            theLB.itemconfigure(idx,bg='#FFFFFF')
         else:
-            theLB.insert(tk.END,'__'+name)
+            #theLB.insert(tk.END,'__'+name)
+            theLB.insert(tk.END,  name)
+            theLB.itemconfigure(idx, bg='#FFBBBB')
     theLB.selection_set(0)
     drawImage()
 
@@ -113,8 +117,9 @@ def onClsChange(event=None):
     if args.imidx >= 0 and len(seidxs)>0:
         cls=args.cls_list[seidxs[0]]
         filename=args.filelist[args.imidx]
-        theLB.delete(args.imidx)
-        theLB.insert(args.imidx,'*_'+filename)
+        #theLB.delete(args.imidx)
+        #theLB.insert(args.imidx,'*_'+filename)
+        theLB.itemconfigure(args.imidx, bg='#FFFFFF')
         theLB.selection_set(args.imidx)
         args.filelabel[filename]=cls
         clslabel.config(text=cls)
