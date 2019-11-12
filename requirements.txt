@@ -1,0 +1,6 @@
+mimetypes
+shutil
+tkinter
+argparse
+easydict
+pillow
